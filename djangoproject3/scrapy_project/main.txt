@@ -1,0 +1,29 @@
+(1) -> scrapy/setting.py      >___ Add this code ___
+# ------------------------ Django Integration -----------------------------
+
+# Django project root level path
+django_path = Path(__file__).resolve().parent.parent.parent
+
+# 
+sys.path.append(str(django_path)+"/")
+
+os.environ['DJANGO_SETTINGS_MODULE'] = 'djangoproject.settings'
+django.setup()
+
+(2) -> scrapy/setting.py      >___ Uncomment this code ___
+
+ITEM_PIPELINES = {
+   "scrapy_project.pipelines.ScrapyProjectPipeline": 300,
+}
+
+
+(3) -> scrapy/setting.py      >___ Remove this code ___
+
+# REQUEST_FINGERPRINTER_IMPLEMENTATION = "2.7"
+# TWISTED_REACTOR = "twisted.internet.asyncioreactor.AsyncioSelectorReactor"
+# FEED_EXPORT_ENCODING = "utf-8"
+
+
+(4) Piplines.py
+(5) items.py
+(6) spider.py
